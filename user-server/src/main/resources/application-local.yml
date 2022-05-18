@@ -1,0 +1,38 @@
+server:
+  port: 8010
+  servlet:
+     context-path: /user
+spring:
+  application:
+    name: user-server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/pccw?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 # 最小空闲连接数
+      max-active: 20 # 最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"     # 不统计这些请求数据
+      stat-view-servlet: # 访问监控网页的登录用户名和密码
+        enabled: true    # 新版默认值是 false, 需要手动打开
+        login-username: root
+        login-password: 123456
+        reset-enable: true
+        allow: ""        # 允许所有ip访问
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        username: nacos
+        password: nacos
+
+mybatis-plus:
+  configuration:
+    mapUnderscoreToCamelCase: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    mapper-locations: classpath:com/luyi/user/maper/xml/*Mapper.xml
+

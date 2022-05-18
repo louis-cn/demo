@@ -1,0 +1,34 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: email-server
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        username: nacos
+        password: nacos
+
+  mail:
+    port: 465
+    host: smtp.qq.com
+    username: 640054794@qq.com
+    password: equtfdodockmbfdc   #授权码
+    title: "register success!"
+    content: "Congratulations on your successful registration!"
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+
